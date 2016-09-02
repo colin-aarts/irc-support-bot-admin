@@ -16,7 +16,7 @@ js    = require 'js-extensions'
 
 
 # Load the ignored users datastore
-ignored-users = do ->
+ignored-users = let
 	ignored-users = fs.read-file-sync "#{process.cwd!}/ignored-users.json", 'utf-8'
 	return JSON.parse ignored-users if ignored-users
 
@@ -240,7 +240,7 @@ module.exports = ->
 
 			# Clear mode
 			else if 'c' in input-data.flags
-				ignored-users = []
+				ignored-users := []
 				save-ignored-users!
 				message = "I have cleared the list of ignored users"
 
